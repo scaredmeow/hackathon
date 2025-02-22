@@ -31,8 +31,6 @@ class Task(BaseModel):
     status: str
     weather_code: List[int]
 
-
-
 class Disaster(BaseModel):
     type: str
     severity_levels: Dict[str, Any]
@@ -45,17 +43,16 @@ class WeatherResponse(BaseModel):
     weather_code: int
 
 class Item(BaseModel):
+    name: str
     picture: str
     category: str
     reduces_damage: bool
-class ItemInInventory(BaseModel):
-    name: str
     quantity: int
+    location: str
+
 class Pet(BaseModel):
     pet_id: str
     name: str
     health: int = Field(ge=0, le=100)
-    fridge: List[ItemInInventory]
-    backpack: List[ItemInInventory]
     tasks_completed: List[str]
     disasters_survived: List[str]

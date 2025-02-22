@@ -265,167 +265,188 @@
   ],
   "items": [
     {
-    "Bottled Water": {
+      "name": "Bottled Water",
       "picture": "bottled_water.png",
       "category": "food",
       "reduces_damage": false,
       "quantity": 10,
       "location": "fridge"
     },
-    "Canned Soup": {
+    {
+      "name": "Canned Soup",
       "picture": "canned_soup.png",
       "category": "food",
       "reduces_damage": false,
       "quantity": 5,
       "location": "fridge"
     },
-    "Canned Vegetables": {
+    {
+      "name": "Canned Vegetables",
       "picture": "canned_vegetables.png",
       "category": "food",
       "reduces_damage": false,
       "quantity": 4,
       "location": "fridge"
     },
-    "Canned Tuna": {
+    {
+      "name": "Canned Tuna",
       "picture": "canned_tuna.png",
       "category": "food",
       "reduces_damage": false,
       "quantity": 6,
       "location": "fridge"
     },
-    "Rice (Pre-cooked packets)": {
+    {
+      "name": "Rice (Pre-cooked packets)",
       "picture": "rice_packets.png",
       "category": "food",
       "reduces_damage": false,
       "quantity": 3,
       "location": "fridge"
     },
-    "Frozen Vegetables": {
+    {
+      "name": "Frozen Vegetables",
       "picture": "frozen_vegetables.png",
       "category": "food",
       "reduces_damage": false,
       "quantity": 5,
       "location": "fridge"
     },
-    "Pain Relievers": {
+    {
+      "name": "Pain Relievers",
       "picture": "pain_relievers.png",
       "category": "medical",
       "reduces_damage": true,
       "quantity": 2,
       "location": "backpack"
     },
-    "Medical Tape": {
+    {
+      "name": "Medical Tape",
       "picture": "medical_tape.png",
       "category": "medical",
       "reduces_damage": true,
       "quantity": 1,
       "location": "backpack"
     },
-    "Tweezers": {
+    {
+      "name": "Tweezers",
       "picture": "tweezers.png",
       "category": "medical",
       "reduces_damage": false,
       "quantity": 1,
       "location": "backpack"
     },
-    "Scissors": {
+    {
+      "name": "Scissors",
       "picture": "scissors.png",
       "category": "emergency tool",
       "reduces_damage": false,
       "quantity": 1,
       "location": "backpack"
     },
-    "Thermometer": {
+    {
+      "name": "Thermometer",
       "picture": "thermometer.png",
       "category": "medical",
       "reduces_damage": false,
       "quantity": 1,
       "location": "backpack"
     },
-    "Multi-tool": {
+    {
+      "name": "Multi-tool",
       "picture": "multi_tool.png",
       "category": "emergency tool",
       "reduces_damage": false,
       "quantity": 1,
       "location": "backpack"
     },
-    "Poncho": {
+    {
+      "name": "Poncho",
       "picture": "poncho.png",
       "category": "protective",
       "reduces_damage": true,
       "quantity": 2,
       "location": "backpack"
     },
-    "Flashlight": {
+    {
+      "name": "Flashlight",
       "picture": "flashlight.png",
       "category": "emergency tool",
       "reduces_damage": false,
       "quantity": 1,
       "location": "backpack"
     },
-    "Raincoat": {
+    {
+      "name": "Raincoat",
       "picture": "raincoat.png",
       "category": "protective",
       "reduces_damage": true,
       "quantity": 1,
       "location": "backpack"
     },
-    "First Aid Kit": {
+    {
+      "name": "First Aid Kit",
       "picture": "first_aid_kit.png",
       "category": "medical",
       "reduces_damage": false,
       "quantity": 1,
       "location": "backpack"
     },
-    "Packaged Juices": {
+    {
+      "name": "Packaged Juices",
       "picture": "packaged_juices.png",
       "category": "food",
       "reduces_damage": false,
       "quantity": 8,
       "location": "fridge"
     },
-    "Milk (long shelf-life)": {
+    {
+      "name": "Milk (long shelf-life)",
       "picture": "milk.png",
       "category": "food",
       "reduces_damage": false,
       "quantity": 3,
       "location": "fridge"
     },
-    "Instant Noodles": {
+    {
+      "name": "Instant Noodles",
       "picture": "instant_noodles.png",
       "category": "food",
       "reduces_damage": false,
       "quantity": 7,
       "location": "fridge"
     },
-    "Energy Bars": {
+    {
+      "name": "Energy Bars",
       "picture": "energy_bars.png",
       "category": "food",
       "reduces_damage": false,
       "quantity": 12,
       "location": "fridge"
     },
-    "Band-aids": {
+    {
+      "name": "Band-aids",
       "picture": "band_aids.png",
       "category": "medical",
       "reduces_damage": true,
       "quantity": 5,
       "location": "backpack"
     },
-    "Antiseptic Wipes": {
+    {
+      "name": "Antiseptic Wipes",
       "picture": "antiseptic_wipes.png",
       "category": "medical",
       "reduces_damage": true,
       "quantity": 4,
       "location": "backpack"
     },
-    "Emergency Blanket": {
+    {
+      "name": "Emergency Blanket",
       "picture": "emergency_blanket.png",
       "category": "protective",
       "reduces_damage": true,
       "quantity": 2,
       "location": "backpack"
     }
-  }
   ]
 }
