@@ -1,34 +1,32 @@
 {
   "users": [
     {
-      "id": "001",
-      "username": "JuanDelaCruz",
-      "email": "juan@example.com",
-      "location": {
-        "city": "Metro Manila",
-        "latitude": 14.5995,
-        "longitude": 120.9842,
-        "disaster_prone_to": ["Typhoon"]
+      "JuanDelaCruz": {
+        "email": "juan@example.com",
+        "location": {
+          "city": "Metro Manila",
+          "latitude": 14.5995,
+          "longitude": 120.9842,
+          "disaster_prone_to": ["Typhoon"]
+        },
+        "tasks_completed": ["task_001", "task_003"],
+        "pet_id": "001",
+        "streak": 5,
+        "points": 250
       },
-      "tasks_completed": ["task_001", "task_003"],
-      "pet_id": "001",
-      "streak": 5,
-      "points": 250
-    },
-    {
-      "id": "002",
-      "username": "MariaSantos",
-      "email": "maria@example.com",
-      "location": {
-        "city": "Quezon City",
-        "latitude": 14.6760,
-        "longitude": 121.0437,
-        "disaster_prone_to": ["Typhoon"]
-      },
-      "tasks_completed": ["task_002", "task_004"],
-      "pet_id": "001",
-      "streak": 3,
-      "points": 180
+      "MariaSantos": {
+        "email": "maria@example.com",
+        "location": {
+          "city": "Quezon City",
+          "latitude": 14.6760,
+          "longitude": 121.0437,
+          "disaster_prone_to": ["Typhoon"]
+        },
+        "tasks_completed": ["task_002", "task_004"],
+        "pet_id": "001",
+        "streak": 3,
+        "points": 180
+      }
     }
   ],
 
