@@ -9,6 +9,7 @@ class Location(BaseModel):
     disaster_prone_to: List[str]
 
 class User(BaseModel):
+    id: Optional[str] = None
     username: str
     email: str
     location: Location

@@ -3,24 +3,63 @@ import json
 from typing import List, Dict, Any, Optional
 import httpx
 from schemas import Location, User, Pet, Task, Item, Disaster, WeatherResponse
+from pymongo import MongoClient
+from bson import ObjectId
+from dotenv import load_dotenv
+import os
+
+load_dotenv(".env", override=True)
 
 app = FastAPI()
 
+# MongoDB Setup
+client = MongoClient(os.getenv("MONGO_URI"))
+db = client["bluehacks"]
+users_collection = db["users"]
 
 # Load JSON data
 with open("db.json", "r") as file:
     db = json.load(file)
 
 @app.get("/users", response_model=List[User])
-def get_users():
-    return db["users"]
+def get_users(source: str = "json"):
+    if source == "json":
+        return db["users"]
+    users = list(users_collection.find())
+    return [{"id": str(user["_id"]), **user} for user in users]
 
 @app.get("/users/{user_id}", response_model=User)
-def get_user(user_id: str):
-    for user in db["users"]:
-        if user["id"] == user_id:
-            return user
+def get_user(user_id: str, source: str = "json"):
+    if source == "json":
+        for user in db["users"]:
+            if user["id"] == user_id:
+                return user
+    elif source == "mongodb":
+        user = users_collection.find_one({"_id": ObjectId(user_id)})
+        if user:
+            return {"id": str(user["_id"]), **user}
     raise HTTPException(status_code=404, detail="User not found")
+
+@app.post("/users", response_model=User)
+def create_user(user: User, source: str = "json"):
+    if source == "json":
+        db["users"].append(user.dict())
+        return user
+    inserted_id = users_collection.insert_one(user.dict()).inserted_id
+    return {"id": str(inserted_id), **user.dict()}
+
+@app.delete("/users/{user_id}", response_model=Dict[str, str])
+def delete_user(user_id: str, source: str = "json"):
+    if source == "json":
+        for i, user in enumerate(db["users"]):
+            if user["id"] == user_id:
+                db["users"].pop(i)
+                return {"message": "User deleted successfully"}
+        raise HTTPException(status_code=404, detail="User not found")
+    result = users_collection.delete_one({"_id": ObjectId(user_id)})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="User not found")
+    return {"message": "User deleted successfully"}
 
 @app.get("/pets", response_model=List[Pet])
 def get_pets():
