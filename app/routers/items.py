@@ -13,6 +13,15 @@ with open("db.json", "r") as file:
 def get_items():
     return db["items"][0]  # Since items are wrapped in a list
 
+# update items
+@router.put("/items/{item_name}", response_model=Item)
+def update_item(item_name: str, item: Item):
+    items = db["items"][0]  # Get the dictionary of items
+    items[item_name] = item
+    with open("db.json", "w") as file:
+        json.dump(db, file)
+    return item
+
 @router.get("/items/{item_name}", response_model=Item)
 def get_item(item_name: str):
     items = db["items"][0]  # Get the dictionary of items
