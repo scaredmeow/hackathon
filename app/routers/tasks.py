@@ -27,18 +27,20 @@ def get_tasks_with_weather_code(weather_code: int):
     
     return tasks
 
-@router.get("/tasks/{task_name}", response_model=Task)
-def get_task(task_name: str):
+@router.get("/tasks/", response_model=Task)
+def get_task(task_id: str):
     for task in db["tasks"]:
-        if task["task_name"] == task_name:
+        if task["task_id"] == task_id:
             return task
     raise HTTPException(status_code=404, detail="Task not found")
+
+
     
-@router.put("/task/{task_name}", response_model=Task)
-def update_task(task_name: str, task: Task, source: str = "json"):
+@router.put("/task/{task_id}", response_model=Task)
+def update_task(task_id: str, task: Task, source: str = "json"):
     if source == "json":
         for i, u in enumerate(db["tasks"]):
-            if u["task_name"] == task_name:
+            if u["task_id"] == task_id:
                 db["tasks"][i] = task.dict()
 
                 with open("db.json", "w") as file:
@@ -50,8 +52,8 @@ def update_task(task_name: str, task: Task, source: str = "json"):
     
     # If source is MongoDB
     task_data = task.dict()
-    result = tasks_collection.update_one({"_id": ObjectId(task_name)}, {"$set": task_data})
+    result = tasks_collection.update_one({"_id": ObjectId(task_id)}, {"$set": task_data})
     if result.matched_count == 0:
         raise HTTPException(status_code=404, detail="Task not found")
     
-    return {"id": task_name, **task_data}
+    return {"id": task_id, **task_data}
