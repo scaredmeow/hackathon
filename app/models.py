@@ -25,12 +25,10 @@ class Pet(BaseModel):
     pet_id: str
     name: str
     health: int = Field(ge=0, le=100)
-    items: List[str]
     fridge: List[str]
     backpack: List[str]
     tasks_completed: List[str]
     disasters_survived: List[str]
-    location: str
 
 class Task(BaseModel):
     task_id: str
