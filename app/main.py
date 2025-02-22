@@ -40,6 +40,7 @@ WMO_WEATHER_CODES = {
 
 class WeatherResponse(BaseModel):
     current_weather: str
+    weather_code: int
 
 # Load JSON data
 with open("db.json", "r") as file:
@@ -103,7 +104,8 @@ async def get_weather(city: str, timezone: Optional[str] = "Asia/Singapore"):
             "latitude": data["latitude"],
             "longitude": data["longitude"],
             "timezone": data["timezone"],
-            "current_weather": weather_description
+            "current_weather": weather_description,
+            "weather_code": weather_code
         }
 
 @app.get("/disasters", response_model=List[Dict[str, Any]])
