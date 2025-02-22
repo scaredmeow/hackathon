@@ -7,11 +7,20 @@ from pymongo import MongoClient
 from bson import ObjectId
 from dotenv import load_dotenv
 import os
+from fastapi.middleware.cors import CORSMiddleware
 
 load_dotenv(".env", override=True)
 
 app = FastAPI()
 
+# Enable CORS for all origins
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 # MongoDB Setup
 client = MongoClient(os.getenv("MONGO_URI"))
 db = client["bluehacks"]
@@ -60,6 +69,20 @@ def delete_user(user_id: str, source: str = "json"):
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail="User not found")
     return {"message": "User deleted successfully"}
+
+@app.put("/users/{user_id}", response_model=User)
+def update_user(user_id: str, user: User, source: str = "json"):
+    if source == "json":
+        for i, u in enumerate(db["users"]):
+            if u["id"] == user_id:
+                db["users"][i] = user.dict()
+                return user
+        raise HTTPException(status_code=404, detail="User not found")
+    user_data = user.dict()
+    result = users_collection.update_one({"_id": ObjectId(user_id)}, {"$set": user_data})
+    if result.matched_count == 0:
+        raise HTTPException(status_code=404, detail="User not found")
+    return {"id": user_id, **user_data}
 
 @app.get("/pets", response_model=List[Pet])
 def get_pets():
