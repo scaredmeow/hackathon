@@ -1,8 +1,15 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 import json
-from typing import List, Dict, Any
-
+from pydantic import BaseModel
+from typing import List, Dict, Any, Optional
+import httpx
 app = FastAPI()
+
+class WeatherResponse(BaseModel):
+    latitude: float
+    longitude: float
+    timezone: str
+    current_weather: dict
 
 # Load JSON data
 with open("db.json", "r") as file:
@@ -30,16 +37,24 @@ def get_pet(pet_id: str):
             return pet
     return {"error": "Pet not found"}
 
-@app.get("/weather", response_model=List[Dict[str, Any]])
-def get_weather():
-    return db["weather"]
-
-@app.get("/weather/{city}", response_model=Dict[str, Any])
-def get_city_weather(city: str):
-    for weather in db["weather"]:
-        if weather["city"].lower() == city.lower():
-            return weather
-    return {"error": "City not found"}
+@app.get("/weather", response_model=WeatherResponse)
+async def get_weather(latitude: float, longitude: float, timezone: Optional[str] = "Asia/Singapore"):
+    """
+    Fetch current weather data for the specified latitude and longitude.
+    """
+    url = "https://api.open-meteo.com/v1/forecast"
+    params = {
+        "latitude": latitude,
+        "longitude": longitude,
+        "current_weather": True,
+        "timezone": timezone
+    }
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url, params=params)
+        if response.status_code != 200:
+            raise HTTPException(status_code=response.status_code, detail="Error fetching weather data")
+        data = response.json()
+        return data
 
 @app.get("/disasters", response_model=List[Dict[str, Any]])
 def get_disasters():
