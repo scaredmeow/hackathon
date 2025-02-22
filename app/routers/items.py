@@ -15,7 +15,12 @@ def get_items():
 
 @router.get("/items/{item_name}", response_model=Item)
 def get_item(item_name: str):
-    items = db["items"][0]
-    if item_name in items:
-        return items[item_name]
+    for item in db["items"]:
+        if item["name"] == item_name:
+            return item
     raise HTTPException(status_code=404, detail="Item not found")
+
+# get items by location
+@router.get("/items/location/{location}", response_model=List[Item])
+def get_items_by_location(location: str):
+    return [item for item in db["items"] if item["location"] == location]

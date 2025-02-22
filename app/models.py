@@ -43,7 +43,6 @@ class WeatherResponse(BaseModel):
     weather_code: int
 
 class Item(BaseModel):
-    name: str
     picture: str
     category: str
     reduces_damage: bool
