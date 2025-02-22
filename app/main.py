@@ -5,7 +5,7 @@ import httpx
 from models import Pet, Task, Item, Disaster, WeatherResponse
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
-from routers import users, tasks, items
+from routers import users, tasks, items, pets
 
 load_dotenv(".env", override=True)
 
@@ -23,21 +23,11 @@ app.add_middleware(
 app.include_router(users.router)
 app.include_router(tasks.router)
 app.include_router(items.router)
+app.include_router(pets.router)
 
 # Load JSON data
 with open("db.json", "r") as file:
     db = json.load(file)
-
-@app.get("/pets", response_model=List[Pet])
-def get_pets():
-    return db["pets"]
-
-@app.get("/pets/{pet_id}", response_model=Pet)
-def get_pet(pet_id: str):
-    for pet in db["pets"]:
-        if pet["pet_id"] == pet_id:
-            return pet
-    raise HTTPException(status_code=404, detail="Pet not found")
 
 @app.get("/disasters", response_model=List[Disaster])
 def get_disasters():
