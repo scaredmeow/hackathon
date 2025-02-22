@@ -5,7 +5,7 @@ import httpx
 from models import Pet, Task, Item, Disaster, WeatherResponse
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
-from routers import users
+from routers import users, tasks
 
 load_dotenv(".env", override=True)
 
@@ -21,6 +21,7 @@ app.add_middleware(
 )
 
 app.include_router(users.router)
+app.include_router(tasks.router)
 
 # Load JSON data
 with open("db.json", "r") as file:
@@ -40,17 +41,6 @@ def get_pet(pet_id: str):
 @app.get("/disasters", response_model=List[Disaster])
 def get_disasters():
     return db["disasters"]
-
-@app.get("/tasks", response_model=List[Task])
-def get_tasks():
-    return db["tasks"]
-
-@app.get("/tasks/{task_id}", response_model=Task)
-def get_task(task_id: str):
-    for task in db["tasks"]:
-        if task["task_id"] == task_id:
-            return task
-    raise HTTPException(status_code=404, detail="Task not found")
 
 @app.get("/items", response_model=Dict[str, Item])
 def get_items():
