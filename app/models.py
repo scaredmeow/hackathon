@@ -31,13 +31,14 @@ class Pet(BaseModel):
     disasters_survived: List[str]
 
 class Task(BaseModel):
-    task_id: str
+    task_id:str
     name: str
     points_gained: int
     points_lost: int
     item_required: Optional[str] = None
     type: str
     status: str
+    weather_code: List[int]
 
 class Item(BaseModel):
     picture: str

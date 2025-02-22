@@ -126,7 +126,8 @@
       "points_lost": 5,
       "item_required": "Flashlight",
       "type": "daily",
-      "status": "pending"
+      "status": "pending",
+      "weather_code": [95, 99]
     },
     {
       "task_id": "task_002",
@@ -135,7 +136,8 @@
       "points_lost": 10,
       "item_required": "Power Bank",
       "type": "daily",
-      "status": "pending"
+      "status": "pending",
+      "weather_code": [95, 99]
     },
     {
       "task_id": "task_003",
@@ -144,7 +146,8 @@
       "points_lost": 10,
       "item_required": null,
       "type": "disaster-prep",
-      "status": "pending"
+      "status": "pending",
+      "weather_code": [95, 99]
     },
     {
       "task_id": "task_004",
@@ -153,7 +156,8 @@
       "points_lost": 5,
       "item_required": "Water Container",
       "type": "disaster-prep",
-      "status": "pending"
+      "status": "pending",
+      "weather_code": [61, 63, 95, 99]
     },
     {
       "task_id": "task_005",
@@ -162,7 +166,8 @@
       "points_lost": 10,
       "item_required": "Food Supplies",
       "type": "disaster-prep",
-      "status": "pending"
+      "status": "pending",
+      "weather_code": [95, 99]
     },
     {
       "task_id": "task_006",
@@ -171,7 +176,8 @@
       "points_lost": 15,
       "item_required": null,
       "type": "disaster-prep",
-      "status": "pending"
+      "status": "pending",
+      "weather_code": [95, 99]
     },
     {
       "task_id": "task_007",
@@ -180,7 +186,8 @@
       "points_lost": 10,
       "item_required": "Bag",
       "type": "disaster-prep",
-      "status": "pending"
+      "status": "pending",
+      "weather_code": [95, 99]
     },
     {
       "task_id": "task_008",
@@ -189,7 +196,8 @@
       "points_lost": 10,
       "item_required": null,
       "type": "disaster-prep",
-      "status": "pending"
+      "status": "pending",
+      "weather_code": [1, 2, 3, 45, 48, 61, 63, 95, 99]
     },
     {
       "task_id": "task_009",
@@ -198,7 +206,8 @@
       "points_lost": 10,
       "item_required": null,
       "type": "disaster-prep",
-      "status": "pending"
+      "status": "pending",
+      "weather_code": [61, 63, 95, 99]
     },
     {
       "task_id": "task_010",
@@ -207,7 +216,8 @@
       "points_lost": 5,
       "item_required": null,
       "type": "disaster-prep",
-      "status": "pending"
+      "status": "pending",
+      "weather_code": [95, 99]
     },
     {
       "task_id": "task_011",
@@ -216,7 +226,8 @@
       "points_lost": 10,
       "item_required": null,
       "type": "disaster-prep",
-      "status": "pending"
+      "status": "pending",
+      "weather_code": [95, 99, 61, 63, 65]
     },
     {
       "task_id": "task_012",
@@ -225,7 +236,8 @@
       "points_lost": 0,
       "item_required": null,
       "type": "fun",
-      "status": "pending"
+      "status": "pending",
+      "weather_code": []
     },
     {
       "task_id": "task_013",
@@ -234,7 +246,8 @@
       "points_lost": 0,
       "item_required": null,
       "type": "fun",
-      "status": "pending"
+      "status": "pending",
+      "weather_code": []
     },
     {
       "task_id": "task_014",
@@ -243,7 +256,8 @@
       "points_lost": 0,
       "item_required": null,
       "type": "fun",
-      "status": "pending"
+      "status": "pending",
+      "weather_code": []
     },
     {
       "task_id": "task_015",
@@ -252,10 +266,10 @@
       "points_lost": 0,
       "item_required": null,
       "type": "fun",
-      "status": "pending"
+      "status": "pending",
+      "weather_code": []
     }
   ],
-
   "items": [
     {
     "Flashlight": {
