@@ -29,9 +29,9 @@ app.include_router(pets.router)
 with open("db.json", "r") as file:
     db = json.load(file)
 
-@app.get("/disasters", response_model=List[Disaster])
+@app.get("/disasters", response_model=Dict[str, Dict])
 def get_disasters():
-    return db["disasters"]
+    return db["disasters"][0]
 
 # WMO Weather Codes Mapping
 WMO_WEATHER_CODES = {
