@@ -21,15 +21,6 @@ class User(BaseModel):
 class UserResponse(User):
     id: str
 
-class Pet(BaseModel):
-    pet_id: str
-    name: str
-    health: int = Field(ge=0, le=100)
-    fridge: List[str]
-    backpack: List[str]
-    tasks_completed: List[str]
-    disasters_survived: List[str]
-
 class Task(BaseModel):
     task_id:str
     name: str
@@ -40,10 +31,7 @@ class Task(BaseModel):
     status: str
     weather_code: List[int]
 
-class Item(BaseModel):
-    picture: str
-    category: str
-    reduces_damage: bool
+
 
 class Disaster(BaseModel):
     type: str
@@ -55,3 +43,19 @@ class WeatherResponse(BaseModel):
     is_day: int
     current_weather: str
     weather_code: int
+
+class Item(BaseModel):
+    picture: str
+    category: str
+    reduces_damage: bool
+class ItemInInventory(BaseModel):
+    name: str
+    quantity: int
+class Pet(BaseModel):
+    pet_id: str
+    name: str
+    health: int = Field(ge=0, le=100)
+    fridge: List[ItemInInventory]
+    backpack: List[ItemInInventory]
+    tasks_completed: List[str]
+    disasters_survived: List[str]
