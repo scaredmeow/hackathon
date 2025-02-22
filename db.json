@@ -142,7 +142,7 @@
       "name": "Secure all windows and doors",
       "points_gained": 15,
       "points_lost": 10,
-      "item_required": "None",
+      "item_required": null,
       "type": "disaster-prep",
       "status": "pending"
     },
@@ -169,7 +169,7 @@
       "name": "Reinforce roof and check for weak spots",
       "points_gained": 25,
       "points_lost": 15,
-      "item_required": "None",
+      "item_required": null,
       "type": "disaster-prep",
       "status": "pending"
     },
@@ -187,7 +187,7 @@
       "name": "Move small, loose outdoor items indoors",
       "points_gained": 20,
       "points_lost": 10,
-      "item_required": "None",
+      "item_required": null,
       "type": "disaster-prep",
       "status": "pending"
     },
@@ -196,7 +196,7 @@
       "name": "Clear storm drains",
       "points_gained": 15,
       "points_lost": 10,
-      "item_required": "None",
+      "item_required": null,
       "type": "disaster-prep",
       "status": "pending"
     },
@@ -205,7 +205,7 @@
       "name": "Inspect roof vents",
       "points_gained": 10,
       "points_lost": 5,
-      "item_required": "None",
+      "item_required": null,
       "type": "disaster-prep",
       "status": "pending"
     },
@@ -214,7 +214,7 @@
       "name": "Secure heavy outdoor objects (e.g., furniture, water tanks)",
       "points_gained": 15,
       "points_lost": 10,
-      "item_required": "None",
+      "item_required": null,
       "type": "disaster-prep",
       "status": "pending"
     },
@@ -223,7 +223,7 @@
       "name": "Feed Pou",
       "points_gained": 5,
       "points_lost": 0,
-      "item_required": "None",
+      "item_required": null,
       "type": "fun",
       "status": "pending"
     },
@@ -232,7 +232,7 @@
       "name": "Pet Pou",
       "points_gained": 5,
       "points_lost": 0,
-      "item_required": "None",
+      "item_required": null,
       "type": "fun",
       "status": "pending"
     },
@@ -241,7 +241,7 @@
       "name": "Play with Pou",
       "points_gained": 5,
       "points_lost": 0,
-      "item_required": "None",
+      "item_required": null,
       "type": "fun",
       "status": "pending"
     },
@@ -250,7 +250,7 @@
       "name": "Give Pou a treat",
       "points_gained": 5,
       "points_lost": 0,
-      "item_required": "None",
+      "item_required": null,
       "type": "fun",
       "status": "pending"
     }

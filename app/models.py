@@ -35,7 +35,7 @@ class Task(BaseModel):
     name: str
     points_gained: int
     points_lost: int
-    item_required: str
+    item_required: Optional[str] = None
     type: str
     status: str
 
