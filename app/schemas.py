@@ -52,5 +52,6 @@ class Disaster(BaseModel):
 class WeatherResponse(BaseModel):
     city: str
     timezone: str
+    is_day: int
     current_weather: str
     weather_code: int
