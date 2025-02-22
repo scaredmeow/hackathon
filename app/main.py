@@ -5,7 +5,7 @@ from typing import List, Dict, Any
 app = FastAPI()
 
 # Load JSON data
-with open("app/db.json", "r") as file:
+with open("db.json", "r") as file:
     db = json.load(file)
 
 @app.get("/users", response_model=List[Dict[str, Any]])
