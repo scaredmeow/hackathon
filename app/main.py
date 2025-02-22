@@ -5,7 +5,7 @@ import httpx
 from models import Pet, Task, Item, Disaster, WeatherResponse
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
-from routers import users, tasks
+from routers import users, tasks, items
 
 load_dotenv(".env", override=True)
 
@@ -22,6 +22,7 @@ app.add_middleware(
 
 app.include_router(users.router)
 app.include_router(tasks.router)
+app.include_router(items.router)
 
 # Load JSON data
 with open("db.json", "r") as file:
@@ -41,17 +42,6 @@ def get_pet(pet_id: str):
 @app.get("/disasters", response_model=List[Disaster])
 def get_disasters():
     return db["disasters"]
-
-@app.get("/items", response_model=Dict[str, Item])
-def get_items():
-    return db["items"][0]  # Since items are wrapped in a list
-
-@app.get("/items/{item_name}", response_model=Item)
-def get_item(item_name: str):
-    items = db["items"][0]
-    if item_name in items:
-        return items[item_name]
-    raise HTTPException(status_code=404, detail="Item not found")
 
 # WMO Weather Codes Mapping
 WMO_WEATHER_CODES = {
