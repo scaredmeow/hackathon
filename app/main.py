@@ -2,12 +2,10 @@ from fastapi import FastAPI, HTTPException
 import json
 from typing import List, Dict, Any, Optional
 import httpx
-from schemas import Location, User, Pet, Task, Item, Disaster, WeatherResponse
-from pymongo import MongoClient
-from bson import ObjectId
+from models import Pet, Task, Item, Disaster, WeatherResponse
 from dotenv import load_dotenv
-import os
 from fastapi.middleware.cors import CORSMiddleware
+from routers import users
 
 load_dotenv(".env", override=True)
 
@@ -21,68 +19,12 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-# MongoDB Setup
-client = MongoClient(os.getenv("MONGO_URI"))
-db = client["bluehacks"]
-users_collection = db["users"]
+
+app.include_router(users.router)
 
 # Load JSON data
 with open("db.json", "r") as file:
     db = json.load(file)
-
-@app.get("/users", response_model=List[User])
-def get_users(source: str = "json"):
-    if source == "json":
-        return db["users"]
-    users = list(users_collection.find())
-    return [{"id": str(user["_id"]), **user} for user in users]
-
-@app.get("/users/{user_id}", response_model=User)
-def get_user(user_id: str, source: str = "json"):
-    if source == "json":
-        for user in db["users"]:
-            if user["id"] == user_id:
-                return user
-    elif source == "mongodb":
-        user = users_collection.find_one({"_id": ObjectId(user_id)})
-        if user:
-            return {"id": str(user["_id"]), **user}
-    raise HTTPException(status_code=404, detail="User not found")
-
-@app.post("/users", response_model=User)
-def create_user(user: User, source: str = "json"):
-    if source == "json":
-        db["users"].append(user.dict())
-        return user
-    inserted_id = users_collection.insert_one(user.dict()).inserted_id
-    return {"id": str(inserted_id), **user.dict()}
-
-@app.delete("/users/{user_id}", response_model=Dict[str, str])
-def delete_user(user_id: str, source: str = "json"):
-    if source == "json":
-        for i, user in enumerate(db["users"]):
-            if user["id"] == user_id:
-                db["users"].pop(i)
-                return {"message": "User deleted successfully"}
-        raise HTTPException(status_code=404, detail="User not found")
-    result = users_collection.delete_one({"_id": ObjectId(user_id)})
-    if result.deleted_count == 0:
-        raise HTTPException(status_code=404, detail="User not found")
-    return {"message": "User deleted successfully"}
-
-@app.put("/users/{user_id}", response_model=User)
-def update_user(user_id: str, user: User, source: str = "json"):
-    if source == "json":
-        for i, u in enumerate(db["users"]):
-            if u["id"] == user_id:
-                db["users"][i] = user.dict()
-                return user
-        raise HTTPException(status_code=404, detail="User not found")
-    user_data = user.dict()
-    result = users_collection.update_one({"_id": ObjectId(user_id)}, {"$set": user_data})
-    if result.matched_count == 0:
-        raise HTTPException(status_code=404, detail="User not found")
-    return {"id": user_id, **user_data}
 
 @app.get("/pets", response_model=List[Pet])
 def get_pets():
