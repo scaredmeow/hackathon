@@ -94,8 +94,8 @@ async def get_weather(city: str, timezone: Optional[str] = "Asia/Singapore"):
         if response.status_code != 200:
             raise HTTPException(status_code=response.status_code, detail="Error fetching weather data")
         data = response.json()
-        weather_code = data["current_weather"].get("weather_code", 0)
-        weather_description = WMO_WEATHER_CODES.get(weather_code, "Unknown weather condition")
+        weather_code = str(data["current_weather"].get("weather_code", 0))
+        weather_description = WMO_WEATHER_CODES.get(int(weather_code), "Unknown weather condition")
         is_day = data["current_weather"].get("is_day", 1)
 
         return WeatherResponse(

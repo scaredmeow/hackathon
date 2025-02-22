@@ -38,7 +38,7 @@ class WeatherResponse(BaseModel):
     timezone: str
     is_day: int
     current_weather: str
-    weather_code: int
+    weather_code: str
 
 class Item(BaseModel):
     picture: str
