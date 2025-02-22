@@ -1,62 +1,11 @@
 from fastapi import FastAPI, HTTPException
 import json
-from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional
 import httpx
+from schemas import Location, User, Pet, Task, Item, Disaster, WeatherResponse
 
 app = FastAPI()
 
-# Pydantic Schemas
-class Location(BaseModel):
-    city: str
-    latitude: float
-    longitude: float
-    disaster_prone_to: List[str]
-
-class User(BaseModel):
-    id: str
-    username: str
-    email: str
-    location: Location
-    tasks_completed: List[str]
-    pet_id: str
-    streak: int = Field(ge=0)
-    points: int = Field(ge=0)
-
-class Pet(BaseModel):
-    pet_id: str
-    name: str
-    health: int = Field(ge=0, le=100)
-    items: List[str]
-    fridge: List[str]
-    backpack: List[str]
-    tasks_completed: List[str]
-    disasters_survived: List[str]
-    location: str
-
-class Task(BaseModel):
-    task_id: str
-    name: str
-    points_gained: int
-    points_lost: int
-    item_required: str
-    type: str
-    status: str
-
-class Item(BaseModel):
-    picture: str
-    category: str
-    reduces_damage: bool
-
-class Disaster(BaseModel):
-    type: str
-    severity_levels: Dict[str, Any]
-
-class WeatherResponse(BaseModel):
-    city: str
-    timezone: str
-    current_weather: str
-    weather_code: int
 
 # Load JSON data
 with open("db.json", "r") as file:
