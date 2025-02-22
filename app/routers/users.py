@@ -57,11 +57,21 @@ def update_user(user_id: str, user: User, source: str = "json"):
     if source == "json":
         for i, u in enumerate(db["users"]):
             if u["id"] == user_id:
+                # Update the user data in memory
                 db["users"][i] = user.dict()
+
+                # Write changes back to the JSON file to persist the data
+                with open("db.json", "w") as file:
+                    json.dump(db, file, indent=4)
+
                 return user
+
         raise HTTPException(status_code=404, detail="User not found")
+    
+    # If source is MongoDB
     user_data = user.dict()
     result = users_collection.update_one({"_id": ObjectId(user_id)}, {"$set": user_data})
     if result.matched_count == 0:
         raise HTTPException(status_code=404, detail="User not found")
+    
     return {"id": user_id, **user_data}
