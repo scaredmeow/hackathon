@@ -39,9 +39,6 @@ WMO_WEATHER_CODES = {
 }
 
 class WeatherResponse(BaseModel):
-    latitude: float
-    longitude: float
-    timezone: str
     current_weather: str
 
 # Load JSON data
@@ -71,10 +68,23 @@ def get_pet(pet_id: str):
     return {"error": "Pet not found"}
 
 @app.get("/weather", response_model=WeatherResponse)
-async def get_weather(latitude: float, longitude: float, timezone: Optional[str] = "Asia/Singapore"):
+async def get_weather(city: str, timezone: Optional[str] = "Asia/Singapore"):
     """
     Fetch current weather data for the specified latitude and longitude.
     """
+
+    url = "https://nominatim.openstreetmap.org/search"
+    params = {"city": city, "format": "json"}
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url, params=params)
+        if response.status_code != 200:
+            raise HTTPException(status_code=response.status_code, detail="Error fetching geolocation data")
+        data = response.json()
+        if not data:
+            raise HTTPException(status_code=404, detail="City not found")
+    latitude = data[0]["lat"]
+    longitude = data[0]["lon"]
+
     url = "https://api.open-meteo.com/v1/forecast"
     params = {
         "latitude": latitude,
