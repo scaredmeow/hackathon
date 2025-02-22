@@ -14,18 +14,31 @@ with open("db.json", "r") as file:
 def get_tasks():
     return db["tasks"]
 
-@router.get("/tasks/{task_id}", response_model=Task)
-def get_task(task_id: str):
+@router.get("/tasks/{weather_code}")
+def get_tasks_with_weather_code(weather_code: int):
+    tasks = []
     for task in db["tasks"]:
-        if task["task_id"] == task_id:
+        # Check if the weather_code is in the weather_code list
+        if weather_code in task.get("weather_code", []):  # Default to empty list if not found
+            # Create a copy of the task and exclude 'weather_code' field
+            task_data = task.copy()  # Copy the task
+            task_data.pop("weather_code", None)  # Remove 'weather_code' from the copy
+            tasks.append(task_data)
+    
+    return tasks
+
+@router.get("/tasks/{task_name}", response_model=Task)
+def get_task(task_name: str):
+    for task in db["tasks"]:
+        if task["task_name"] == task_name:
             return task
     raise HTTPException(status_code=404, detail="Task not found")
     
-@router.put("/task/{task_id}", response_model=Task)
-def update_task(task_id: str, task: Task, source: str = "json"):
+@router.put("/task/{task_name}", response_model=Task)
+def update_task(task_name: str, task: Task, source: str = "json"):
     if source == "json":
         for i, u in enumerate(db["tasks"]):
-            if u["task_id"] == task_id:
+            if u["task_name"] == task_name:
                 db["tasks"][i] = task.dict()
 
                 with open("db.json", "w") as file:
@@ -37,8 +50,8 @@ def update_task(task_id: str, task: Task, source: str = "json"):
     
     # If source is MongoDB
     task_data = task.dict()
-    result = tasks_collection.update_one({"_id": ObjectId(task_id)}, {"$set": task_data})
+    result = tasks_collection.update_one({"_id": ObjectId(task_name)}, {"$set": task_data})
     if result.matched_count == 0:
         raise HTTPException(status_code=404, detail="Task not found")
     
-    return {"id": task_id, **task_data}
+    return {"id": task_name, **task_data}
