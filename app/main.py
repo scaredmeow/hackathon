@@ -1,10 +1,114 @@
 from fastapi import FastAPI, HTTPException
 import json
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 from typing import List, Dict, Any, Optional
 import httpx
 
 app = FastAPI()
+
+# Pydantic Schemas
+class Location(BaseModel):
+    city: str
+    latitude: float
+    longitude: float
+    disaster_prone_to: List[str]
+
+class User(BaseModel):
+    id: str
+    username: str
+    email: str
+    location: Location
+    tasks_completed: List[str]
+    pet_id: str
+    streak: int = Field(ge=0)
+    points: int = Field(ge=0)
+
+class Pet(BaseModel):
+    pet_id: str
+    name: str
+    health: int = Field(ge=0, le=100)
+    items: List[str]
+    fridge: List[str]
+    backpack: List[str]
+    tasks_completed: List[str]
+    disasters_survived: List[str]
+    location: str
+
+class Task(BaseModel):
+    task_id: str
+    name: str
+    points_gained: int
+    points_lost: int
+    item_required: str
+    type: str
+    status: str
+
+class Item(BaseModel):
+    picture: str
+    category: str
+    reduces_damage: bool
+
+class Disaster(BaseModel):
+    type: str
+    severity_levels: Dict[str, Any]
+
+class WeatherResponse(BaseModel):
+    city: str
+    timezone: str
+    current_weather: str
+    weather_code: int
+
+# Load JSON data
+with open("db.json", "r") as file:
+    db = json.load(file)
+
+@app.get("/users", response_model=List[User])
+def get_users():
+    return db["users"]
+
+@app.get("/users/{user_id}", response_model=User)
+def get_user(user_id: str):
+    for user in db["users"]:
+        if user["id"] == user_id:
+            return user
+    raise HTTPException(status_code=404, detail="User not found")
+
+@app.get("/pets", response_model=List[Pet])
+def get_pets():
+    return db["pets"]
+
+@app.get("/pets/{pet_id}", response_model=Pet)
+def get_pet(pet_id: str):
+    for pet in db["pets"]:
+        if pet["pet_id"] == pet_id:
+            return pet
+    raise HTTPException(status_code=404, detail="Pet not found")
+
+@app.get("/disasters", response_model=List[Disaster])
+def get_disasters():
+    return db["disasters"]
+
+@app.get("/tasks", response_model=List[Task])
+def get_tasks():
+    return db["tasks"]
+
+@app.get("/tasks/{task_id}", response_model=Task)
+def get_task(task_id: str):
+    for task in db["tasks"]:
+        if task["task_id"] == task_id:
+            return task
+    raise HTTPException(status_code=404, detail="Task not found")
+
+@app.get("/items", response_model=Dict[str, Item])
+def get_items():
+    return db["items"][0]  # Since items are wrapped in a list
+
+@app.get("/items/{item_name}", response_model=Item)
+def get_item(item_name: str):
+    items = db["items"][0]
+    if item_name in items:
+        return items[item_name]
+    raise HTTPException(status_code=404, detail="Item not found")
 
 # WMO Weather Codes Mapping
 WMO_WEATHER_CODES = {
@@ -38,42 +142,11 @@ WMO_WEATHER_CODES = {
     99: "Thunderstorm with heavy hail"
 }
 
-class WeatherResponse(BaseModel):
-    current_weather: str
-    weather_code: int
-
-# Load JSON data
-with open("db.json", "r") as file:
-    db = json.load(file)
-
-@app.get("/users", response_model=List[Dict[str, Any]])
-def get_users():
-    return db["users"]
-
-@app.get("/users/{user_id}", response_model=Dict[str, Any])
-def get_user(user_id: str):
-    for user in db["users"]:
-        if user["id"] == user_id:
-            return user
-    return {"error": "User not found"}
-
-@app.get("/pets", response_model=List[Dict[str, Any]])
-def get_pets():
-    return db["pets"]
-
-@app.get("/pets/{pet_id}", response_model=Dict[str, Any])
-def get_pet(pet_id: str):
-    for pet in db["pets"]:
-        if pet["pet_id"] == pet_id:
-            return pet
-    return {"error": "Pet not found"}
-
 @app.get("/weather", response_model=WeatherResponse)
 async def get_weather(city: str, timezone: Optional[str] = "Asia/Singapore"):
     """
     Fetch current weather data for the specified latitude and longitude.
     """
-
     url = "https://nominatim.openstreetmap.org/search"
     params = {"city": city, "format": "json"}
     async with httpx.AsyncClient() as client:
@@ -100,36 +173,9 @@ async def get_weather(city: str, timezone: Optional[str] = "Asia/Singapore"):
         data = response.json()
         weather_code = data["current_weather"].get("weather_code", 0)
         weather_description = WMO_WEATHER_CODES.get(weather_code, "Unknown weather condition")
-        return {
-            "latitude": data["latitude"],
-            "longitude": data["longitude"],
-            "timezone": data["timezone"],
-            "current_weather": weather_description,
-            "weather_code": weather_code
-        }
-
-@app.get("/disasters", response_model=List[Dict[str, Any]])
-def get_disasters():
-    return db["disasters"]
-
-@app.get("/tasks", response_model=List[Dict[str, Any]])
-def get_tasks():
-    return db["tasks"]
-
-@app.get("/tasks/{task_id}", response_model=Dict[str, Any])
-def get_task(task_id: str):
-    for task in db["tasks"]:
-        if task["task_id"] == task_id:
-            return task
-    return {"error": "Task not found"}
-
-@app.get("/items", response_model=Dict[str, Dict[str, Any]])
-def get_items():
-    return db["items"][0]  # Since items are wrapped in a list
-
-@app.get("/items/{item_name}", response_model=Dict[str, Any])
-def get_item(item_name: str):
-    items = db["items"][0]
-    if item_name in items:
-        return items[item_name]
-    return {"error": "Item not found"}
+        return WeatherResponse(
+            city=city,
+            timezone=data["timezone"],
+            current_weather=weather_description,
+            weather_code=weather_code
+        )
