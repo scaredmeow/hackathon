@@ -228,7 +228,7 @@
       "item_required": null,
       "type": "fun",
       "status": "pending",
-      "weather_code": []
+      "weather_code": [0]
     },
     {
       "task_id": "task_013",
@@ -238,7 +238,7 @@
       "item_required": null,
       "type": "fun",
       "status": "pending",
-      "weather_code": []
+      "weather_code": [0]
     },
     {
       "task_id": "task_014",
@@ -248,7 +248,7 @@
       "item_required": null,
       "type": "fun",
       "status": "pending",
-      "weather_code": []
+      "weather_code": [0]
     },
     {
       "task_id": "task_015",
@@ -258,7 +258,7 @@
       "item_required": null,
       "type": "fun",
       "status": "pending",
-      "weather_code": []
+      "weather_code": [0]
     }
   ],
   "items": [
