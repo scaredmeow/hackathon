@@ -3,13 +3,46 @@ import json
 from pydantic import BaseModel
 from typing import List, Dict, Any, Optional
 import httpx
+
 app = FastAPI()
+
+# WMO Weather Codes Mapping
+WMO_WEATHER_CODES = {
+    0: "Clear sky",
+    1: "Mainly clear",
+    2: "Partly cloudy",
+    3: "Overcast",
+    45: "Fog",
+    48: "Depositing rime fog",
+    51: "Drizzle: Light",
+    53: "Drizzle: Moderate",
+    55: "Drizzle: Dense intensity",
+    56: "Freezing Drizzle: Light",
+    57: "Freezing Drizzle: Dense intensity",
+    61: "Rain: Slight",
+    63: "Rain: Moderate",
+    65: "Rain: Heavy intensity",
+    66: "Freezing Rain: Light",
+    67: "Freezing Rain: Heavy",
+    71: "Snow fall: Slight",
+    73: "Snow fall: Moderate",
+    75: "Snow fall: Heavy intensity",
+    77: "Snow grains",
+    80: "Rain showers: Slight",
+    81: "Rain showers: Moderate",
+    82: "Rain showers: Violent",
+    85: "Snow showers: Slight",
+    86: "Snow showers: Heavy",
+    95: "Thunderstorm: Slight or moderate",
+    96: "Thunderstorm with slight hail",
+    99: "Thunderstorm with heavy hail"
+}
 
 class WeatherResponse(BaseModel):
     latitude: float
     longitude: float
     timezone: str
-    current_weather: dict
+    current_weather: str
 
 # Load JSON data
 with open("db.json", "r") as file:
@@ -54,7 +87,14 @@ async def get_weather(latitude: float, longitude: float, timezone: Optional[str]
         if response.status_code != 200:
             raise HTTPException(status_code=response.status_code, detail="Error fetching weather data")
         data = response.json()
-        return data
+        weather_code = data["current_weather"].get("weather_code", 0)
+        weather_description = WMO_WEATHER_CODES.get(weather_code, "Unknown weather condition")
+        return {
+            "latitude": data["latitude"],
+            "longitude": data["longitude"],
+            "timezone": data["timezone"],
+            "current_weather": weather_description
+        }
 
 @app.get("/disasters", response_model=List[Dict[str, Any]])
 def get_disasters():
