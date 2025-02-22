@@ -1,0 +1,325 @@
+{
+  "users": [
+    {
+      "id": "001",
+      "username": "JuanDelaCruz",
+      "email": "juan@example.com",
+      "location": {
+        "city": "Metro Manila",
+        "latitude": 14.5995,
+        "longitude": 120.9842,
+        "disaster_prone_to": ["Typhoon"]
+      },
+      "tasks_completed": ["task_001", "task_003"],
+      "pet_id": "001",
+      "streak": 5,
+      "points": 250
+    },
+    {
+      "id": "002",
+      "username": "MariaSantos",
+      "email": "maria@example.com",
+      "location": {
+        "city": "Quezon City",
+        "latitude": 14.6760,
+        "longitude": 121.0437,
+        "disaster_prone_to": ["Typhoon"]
+      },
+      "tasks_completed": ["task_002", "task_004"],
+      "pet_id": "001",
+      "streak": 3,
+      "points": 180
+    }
+  ],
+
+  "pets": [
+    {
+      "pet_id": "001",
+      "name": "Pou",
+      "health": 85,
+      "items": ["Flashlight", "Raincoat"],
+      "fridge": [
+        "Bottled Water", "Canned Soup", "Canned Vegetables", "Canned Tuna", "Instant Noodles", 
+        "Rice (Pre-cooked packets)", "Energy Bars", "Packaged Juices", "Frozen Vegetables", "Milk (Shelf-stable)"
+      ],
+      "backpack": [
+        "First Aid Kit", "Band-aids", "Pain Relievers", "Antiseptic Wipes", "Medical Tape", "Tweezers", 
+        "Scissors", "Thermometer", "Flashlight", "Multi-tool", "Emergency Blanket", "Poncho"
+      ],
+      "tasks_completed": ["task_001", "task_003", "task_005"],
+      "disasters_survived": ["Typhoon Odette"],
+      "location": "living room"
+    }
+  ],
+
+  "weather": [
+    {
+      "city": "Metro Manila",
+      "current_weather": {
+        "date": "2025-02-22",
+        "condition": "Rainy",
+        "temperature": 27,
+        "wind_speed": 10,
+        "humidity": 80,
+        "background": "rainy_bg.png"
+      },
+      "forecast": {
+        "typhoon_in": 3,
+        "expected_severity": "high",
+        "storm_warning_level": 3
+      }
+    }
+  ],
+
+  "disasters": [
+  {
+    "Typhoon": {
+      "severity_levels": {
+        "1": {
+          "tasks": [
+            "task_001", "task_002", "task_003", "task_004", "task_010", "task_011", "task_012", "task_013", "task_014"
+          ],
+          "background": "stormy_lvl1.png",
+          "severity": "low",
+          "forecasted_days": 3
+        },
+        "2": {
+          "tasks": [
+            "task_001", "task_002", "task_003", "task_004", "task_005", "task_010", "task_011", "task_012", "task_013", "task_015"
+          ],
+          "background": "stormy_lvl2.png",
+          "severity": "moderate",
+          "forecasted_days": 2
+        },
+        "3": {
+          "tasks": [
+            "task_001", "task_002", "task_003", "task_004", "task_005", "task_006", "task_007", "task_010", "task_011"
+          ],
+          "background": "stormy_lvl3.png",
+          "severity": "high",
+          "forecasted_days": 1
+        },
+        "4": {
+          "tasks": [
+            "task_001", "task_002", "task_003", "task_004", "task_005", "task_006", "task_007", "task_008"
+          ],
+          "background": "stormy_lvl4.png",
+          "severity": "very high",
+          "forecasted_days": 1
+        },
+        "5": {
+          "tasks": [
+            "task_001", "task_002", "task_003", "task_004", "task_005", "task_006", "task_007", "task_008", "task_009"
+          ],
+          "background": "stormy_lvl5.png",
+          "severity": "extreme",
+          "forecasted_days": 0
+        }
+      }
+    }
+  }
+  ],
+
+  "tasks": [
+    {
+      "task_id": "task_001",
+      "name": "Check 1 flashlight",
+      "points_gained": 10,
+      "points_lost": 5,
+      "item_required": "Flashlight",
+      "type": "daily",
+      "status": "pending"
+    },
+    {
+      "task_id": "task_002",
+      "name": "Charge 2 power banks",
+      "points_gained": 20,
+      "points_lost": 10,
+      "item_required": "Power Bank",
+      "type": "daily",
+      "status": "pending"
+    },
+    {
+      "task_id": "task_003",
+      "name": "Secure all windows and doors",
+      "points_gained": 15,
+      "points_lost": 10,
+      "item_required": "None",
+      "type": "disaster-prep",
+      "status": "pending"
+    },
+    {
+      "task_id": "task_004",
+      "name": "Fill 3 water containers (5L each)",
+      "points_gained": 10,
+      "points_lost": 5,
+      "item_required": "Water Container",
+      "type": "disaster-prep",
+      "status": "pending"
+    },
+    {
+      "task_id": "task_005",
+      "name": "Stock up on 7-10 days of food",
+      "points_gained": 15,
+      "points_lost": 10,
+      "item_required": "Food Supplies",
+      "type": "disaster-prep",
+      "status": "pending"
+    },
+    {
+      "task_id": "task_006",
+      "name": "Reinforce roof and check for weak spots",
+      "points_gained": 25,
+      "points_lost": 15,
+      "item_required": "None",
+      "type": "disaster-prep",
+      "status": "pending"
+    },
+    {
+      "task_id": "task_007",
+      "name": "Prepare 1 emergency bag (clothes, ID, cash)",
+      "points_gained": 20,
+      "points_lost": 10,
+      "item_required": "Bag",
+      "type": "disaster-prep",
+      "status": "pending"
+    },
+    {
+      "task_id": "task_008",
+      "name": "Move small, loose outdoor items indoors",
+      "points_gained": 20,
+      "points_lost": 10,
+      "item_required": "None",
+      "type": "disaster-prep",
+      "status": "pending"
+    },
+    {
+      "task_id": "task_009",
+      "name": "Clear storm drains",
+      "points_gained": 15,
+      "points_lost": 10,
+      "item_required": "None",
+      "type": "disaster-prep",
+      "status": "pending"
+    },
+    {
+      "task_id": "task_010",
+      "name": "Inspect roof vents",
+      "points_gained": 10,
+      "points_lost": 5,
+      "item_required": "None",
+      "type": "disaster-prep",
+      "status": "pending"
+    },
+    {
+      "task_id": "task_011",
+      "name": "Secure heavy outdoor objects (e.g., furniture, water tanks)",
+      "points_gained": 15,
+      "points_lost": 10,
+      "item_required": "None",
+      "type": "disaster-prep",
+      "status": "pending"
+    },
+    {
+      "task_id": "task_012",
+      "name": "Feed Pou",
+      "points_gained": 5,
+      "points_lost": 0,
+      "item_required": "None",
+      "type": "fun",
+      "status": "pending"
+    },
+    {
+      "task_id": "task_013",
+      "name": "Pet Pou",
+      "points_gained": 5,
+      "points_lost": 0,
+      "item_required": "None",
+      "type": "fun",
+      "status": "pending"
+    },
+    {
+      "task_id": "task_014",
+      "name": "Play with Pou",
+      "points_gained": 5,
+      "points_lost": 0,
+      "item_required": "None",
+      "type": "fun",
+      "status": "pending"
+    },
+    {
+      "task_id": "task_015",
+      "name": "Give Pou a treat",
+      "points_gained": 5,
+      "points_lost": 0,
+      "item_required": "None",
+      "type": "fun",
+      "status": "pending"
+    }
+  ],
+
+  "items": [
+    {
+    "Flashlight": {
+      "picture": "flashlight.png",
+      "category": "emergency tool",
+      "reduces_damage": false
+    },
+    "Raincoat": {
+      "picture": "raincoat.png",
+      "category": "protective",
+      "reduces_damage": true
+    },
+    "First Aid Kit": {
+      "picture": "first_aid_kit.png",
+      "category": "medical",
+      "reduces_damage": false
+    },
+    "Canned Food": {
+      "picture": "canned_food.png",
+      "category": "food",
+      "reduces_damage": false
+    },
+    "Water Bottles": {
+      "picture": "water_bottles.png",
+      "category": "food",
+      "reduces_damage": false
+    },
+    "Emergency Blanket": {
+      "picture": "emergency_blanket.png",
+      "category": "protective",
+      "reduces_damage": true
+    },
+    "Packaged Juices": {
+      "picture": "packaged_juices.png",
+      "category": "food",
+      "reduces_damage": false
+    },
+    "Milk (long shelf-life)": {
+      "picture": "milk.png",
+      "category": "food",
+      "reduces_damage": false
+    },
+    "Instant Noodles": {
+      "picture": "instant_noodles.png",
+      "category": "food",
+      "reduces_damage": false
+    },
+    "Energy Bars": {
+      "picture": "energy_bars.png",
+      "category": "food",
+      "reduces_damage": false
+    },
+    "Band-aids": {
+      "picture": "band_aids.png",
+      "category": "medical",
+      "reduces_damage": true
+    },
+    "Antiseptic Wipes": {
+      "picture": "antiseptic_wipes.png",
+      "category": "medical",
+      "reduces_damage": true
+    }
+  }
+  ]
+}
