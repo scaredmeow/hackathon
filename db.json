@@ -43,7 +43,7 @@
       "xian": {
         "email": "xian@example.com",
         "location": {
-          "city": "Iloilo",
+          "city": "Los Angeles",
           "latitude": 14.5995,
           "longitude": 120.9842,
           "disaster_prone_to": ["Typhoon"]
