@@ -20,7 +20,7 @@ class UserResponse(User):
     id: str
 
 class Task(BaseModel):
-    task_id: str
+    task_id: int
     name: str
     points_gained: int
     points_lost: int

@@ -110,7 +110,7 @@
 
   "tasks": [
     {
-      "task_id": "task_001",
+      "task_id": 0,
       "name": "Check 1 flashlight",
       "points_gained": 10,
       "points_lost": 5,
@@ -120,7 +120,7 @@
       "weather_code": ["95", "99"]
     },
     {
-      "task_id": "task_002",
+      "task_id": 1,
       "name": "Charge 2 power banks",
       "points_gained": 20,
       "points_lost": 10,
@@ -130,7 +130,7 @@
       "weather_code": ["95", "99"]
     },
     {
-      "task_id": "task_003",
+      "task_id": 2,
       "name": "Secure all windows and doors",
       "points_gained": 15,
       "points_lost": 10,
@@ -140,7 +140,7 @@
       "weather_code": ["95", "99"]
     },
     {
-      "task_id": "task_004",
+      "task_id": 3,
       "name": "Fill 3 water containers (5L each)",
       "points_gained": 10,
       "points_lost": 5,
@@ -150,7 +150,7 @@
       "weather_code": ["61", "63", "95", "99"]
     },
     {
-      "task_id": "task_005",
+      "task_id": 4,
       "name": "Stock up on 7-10 days of food",
       "points_gained": 15,
       "points_lost": 10,
@@ -160,7 +160,7 @@
       "weather_code": ["95", "99"]
     },
     {
-      "task_id": "task_006",
+      "task_id": 5,
       "name": "Reinforce roof and check for weak spots",
       "points_gained": 25,
       "points_lost": 15,
@@ -170,7 +170,7 @@
       "weather_code": ["95", "99"]
     },
     {
-      "task_id": "task_007",
+      "task_id": 6,
       "name": "Prepare 1 emergency bag (clothes, ID, cash)",
       "points_gained": 20,
       "points_lost": 10,
@@ -180,7 +180,7 @@
       "weather_code": ["95", "99"]
     },
     {
-      "task_id": "task_008",
+      "task_id": 7,
       "name": "Move small, loose outdoor items indoors",
       "points_gained": 20,
       "points_lost": 10,
@@ -190,7 +190,7 @@
       "weather_code": ["1", "2", "3", "45", "48", "61", "63", "95", "99"]
     },
     {
-      "task_id": "task_009",
+      "task_id": 8,
       "name": "Clear storm drains",
       "points_gained": 15,
       "points_lost": 10,
@@ -200,7 +200,7 @@
       "weather_code": ["61", "63", "95", "99"]
     },
     {
-      "task_id": "task_010",
+      "task_id": 9,
       "name": "Inspect roof vents",
       "points_gained": 10,
       "points_lost": 5,
@@ -210,7 +210,7 @@
       "weather_code": ["95", "99"]
     },
     {
-      "task_id": "task_011",
+      "task_id": 10,
       "name": "Secure heavy outdoor objects (e.g., furniture, water tanks)",
       "points_gained": 15,
       "points_lost": 10,
@@ -220,7 +220,7 @@
       "weather_code": ["95", "99", "61", "63", "65"]
     },
     {
-      "task_id": "task_012",
+      "task_id": 11,
       "name": "Feed Pou",
       "points_gained": 5,
       "points_lost": 0,
@@ -230,7 +230,7 @@
       "weather_code": ["0"]
     },
     {
-      "task_id": "task_013",
+      "task_id": 12,
       "name": "Pet Pou",
       "points_gained": 5,
       "points_lost": 0,
@@ -240,7 +240,7 @@
       "weather_code": ["0"]
     },
     {
-      "task_id": "task_014",
+      "task_id": 13,
       "name": "Play with Pou",
       "points_gained": 5,
       "points_lost": 0,
@@ -250,7 +250,7 @@
       "weather_code": ["0"]
     },
     {
-      "task_id": "task_015",
+      "task_id": 14,
       "name": "Give Pou a treat",
       "points_gained": 5,
       "points_lost": 0,
