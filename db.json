@@ -1,8 +1,8 @@
 {
   "users": [
     {
-      "JuanDelaCruz": {
-        "email": "juan@example.com",
+      "anne": {
+        "email": "anne@example.com",
         "location": {
           "city": "Metro Manila",
           "latitude": 14.5995,
@@ -14,10 +14,10 @@
         "streak": 5,
         "points": 250
       },
-      "MariaSantos": {
-        "email": "maria@example.com",
+      "rich": {
+        "email": "rich@example.com",
         "location": {
-          "city": "Quezon City",
+          "city": "Davao City",
           "latitude": 14.6760,
           "longitude": 121.0437,
           "disaster_prone_to": ["Typhoon"]
@@ -26,6 +26,32 @@
         "pet_name": "001",
         "streak": 3,
         "points": 180
+      },
+      "sophia": {
+        "email": "sophia@example.com",
+        "location": {
+          "city": "Quezon City",
+          "latitude": 14.5995,
+          "longitude": 120.9842,
+          "disaster_prone_to": ["Typhoon"]
+        },
+        "tasks_completed": ["task_001", "task_003"],
+        "pet_name": "001",
+        "streak": 5,
+        "points": 250
+      },
+      "xian": {
+        "email": "xian@example.com",
+        "location": {
+          "city": "Iloilo",
+          "latitude": 14.5995,
+          "longitude": 120.9842,
+          "disaster_prone_to": ["Typhoon"]
+        },
+        "tasks_completed": ["task_001", "task_003"],
+        "pet_name": "001",
+        "streak": 5,
+        "points": 250
       }
     }
   ],
@@ -42,32 +68,36 @@
 
   "weather": [
     {
-      "city": "antique",
+      "city": "Davao City",
       "timezone": "Asia/Singapore",
       "is_day": 1,
       "current_weather": "Rain: Slight",
-      "weather_code": "61"
+      "weather_code": "61",
+      "background": "Heavy Rain.png"
     },
     {
-      "city": "masagana",
+      "city": "Metro Manila",
       "timezone": "Asia/Singapore",
       "is_day": 1,
       "current_weather": "Overcast",
-      "weather_code": "3"
+      "weather_code": "3",
+      "background": "Cloudy.png"
     },
     {
-      "city": "manila",
+      "city": "Quezon City",
       "timezone": "Asia/Singapore",
       "is_day": 1,
       "current_weather": "Clear sky",
-      "weather_code": "0"
+      "weather_code": "0",
+      "background": "Clear Skies.png"
     },
     {
-      "city": "katipunan",
+      "city": "Los Angeles",
       "timezone": "Asia/Singapore",
-      "is_day": 1,
-      "current_weather": "Partly cloudy",
-      "weather_code": "2"
+      "is_day": 0,
+      "current_weather": "Thunderstorm",
+      "weather_code": "95",
+      "background": "Thunderstorm-1.png"
     }
   ],
 
