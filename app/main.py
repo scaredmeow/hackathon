@@ -70,18 +70,19 @@ WMO_WEATHER_CODES = {
 async def get_location_weather(city: str, timezone: Optional[str] = "Asia/Singapore"):
     # get weathers from db.json
     weathers = db["weather"]
-    
+
     # Find the weather data for the specified city
     weather = next((w for w in weathers if w["city"].lower() == city.lower()), None)
     if not weather:
         raise HTTPException(status_code=404, detail="City not found")
-    
-    return WeatherResponse(
+
+    return FixedWeatherResponse(
         city=weather["city"],
         timezone=weather["timezone"],
         current_weather=weather["current_weather"],
         weather_code=weather["weather_code"],
-        is_day=weather["is_day"]
+        is_day=weather["is_day"],
+        background=weather["background"]
     )
 
 
