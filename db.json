@@ -10,7 +10,7 @@
           "disaster_prone_to": ["Typhoon"]
         },
         "tasks_completed": ["task_001", "task_003"],
-        "pet_name": "Pou",
+        "pet_id": "001",
         "streak": 5,
         "points": 250
       },
@@ -23,7 +23,7 @@
           "disaster_prone_to": ["Typhoon"]
         },
         "tasks_completed": ["task_002", "task_004"],
-        "pet_name": "Pou",
+        "pet_id": "001",
         "streak": 3,
         "points": 180
       }
@@ -32,7 +32,8 @@
 
   "pets": [
   {
-    "pet_name": "Pou",
+    "pet_id": "001",
+    "name": "Pou",
     "health": 85,
     "tasks_completed": ["task_001", "task_003", "task_005"],
     "disasters_survived": ["Typhoon Odette"]

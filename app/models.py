@@ -12,7 +12,7 @@ class User(BaseModel):
     email: str
     location: Location
     tasks_completed: List[str] = []
-    pet_name: Optional[str] = None
+    pet_id: Optional[str] = None
     streak: int = Field(default=0, ge=0)
     points: int = Field(default=0, ge=0)
 
@@ -48,7 +48,8 @@ class Item(BaseModel):
     location: str
 
 class Pet(BaseModel):
-    pet_name: str
+    pet_id: str
+    name: str
     health: int = Field(ge=0, le=100)
     tasks_completed: List[str]
     disasters_survived: List[str]
