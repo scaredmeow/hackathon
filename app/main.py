@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 import json
 from typing import List, Dict, Any, Optional
 import httpx
-from models import Pet, Task, Item, Disaster, WeatherResponse
+from models import Pet, Task, Item, Disaster, WeatherResponse, FixedWeatherResponse
 from dotenv import load_dotenv
 from fastapi.middleware.cors import CORSMiddleware
 from routers import users, tasks, items, pets
@@ -66,7 +66,7 @@ WMO_WEATHER_CODES = {
 }
 
 # app get location weather
-@app.get("/weather/fixed", response_model=WeatherResponse)
+@app.get("/weather/fixed", response_model=FixedWeatherResponse)
 async def get_location_weather(city: str, timezone: Optional[str] = "Asia/Singapore"):
     # get weathers from db.json
     weathers = db["weather"]

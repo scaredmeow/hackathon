@@ -40,6 +40,14 @@ class WeatherResponse(BaseModel):
     current_weather: str
     weather_code: str
 
+class FixedWeatherResponse(BaseModel):
+    city: str
+    timezone: str
+    is_day: int
+    current_weather: str
+    weather_code: str
+    background: str
+
 class Item(BaseModel):
     picture: str
     category: str
