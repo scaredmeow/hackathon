@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 import json
 from typing import List, Dict
 from models import Task
@@ -11,11 +11,11 @@ with open("db.json", "r") as file:
     db = json.load(file)
 
 @router.get("/tasks", response_model=List[Task])
-def get_tasks():
-    return db["tasks"]
+def get_tasks(limit: int = Query(5, ge=1), offset: int = Query(0, ge=0)):
+    return db["tasks"][offset:offset + limit]
 
 @router.get("/tasks/{weather_code}")
-def get_tasks_with_weather_code(weather_code: str):
+def get_tasks_with_weather_code(weather_code: str, limit: int = Query(5, ge=1), offset: int = Query(0, ge=0)):
     tasks = []
     for task in db["tasks"]:
         # Check if the weather_code is in the weather_code list
@@ -24,8 +24,8 @@ def get_tasks_with_weather_code(weather_code: str):
             task_data = task.copy()  # Copy the task
             task_data.pop("weather_code", None)  # Remove 'weather_code' from the copy
             tasks.append(task_data)
-    
-    return tasks
+
+    return tasks[offset:offset + limit]
 
 @router.get("/tasks/", response_model=Task)
 def get_task(task_id: int):
@@ -47,11 +47,11 @@ def update_task(task_id: int, task: Task, source: str = "json"):
                 return task
 
         raise HTTPException(status_code=404, detail="Task not found")
-    
+
     # If source is MongoDB
     task_data = task.dict()
     result = tasks_collection.update_one({"_id": ObjectId(task_id)}, {"$set": task_data})
     if result.matched_count == 0:
         raise HTTPException(status_code=404, detail="Task not found")
-    
+
     return {"id": task_id, **task_data}
