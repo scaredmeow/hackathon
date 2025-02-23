@@ -49,7 +49,6 @@ class Item(BaseModel):
 
 class Pet(BaseModel):
     pet_name: str
-    name: str
     health: int = Field(ge=0, le=100)
     tasks_completed: List[str]
     disasters_survived: List[str]
