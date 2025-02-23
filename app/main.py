@@ -65,6 +65,26 @@ WMO_WEATHER_CODES = {
     99: "Thunderstorm with heavy hail"
 }
 
+# app get location weather
+@app.get("/weather/fixed", response_model=WeatherResponse)
+async def get_location_weather(city: str, timezone: Optional[str] = "Asia/Singapore"):
+    # get weathers from db.json
+    weathers = db["weather"]
+    
+    # Find the weather data for the specified city
+    weather = next((w for w in weathers if w["city"].lower() == city.lower()), None)
+    if not weather:
+        raise HTTPException(status_code=404, detail="City not found")
+    
+    return WeatherResponse(
+        city=weather["city"],
+        timezone=weather["timezone"],
+        current_weather=weather["current_weather"],
+        weather_code=weather["weather_code"],
+        is_day=weather["is_day"]
+    )
+
+
 @app.get("/weather", response_model=WeatherResponse)
 async def get_weather(city: str, timezone: Optional[str] = "Asia/Singapore"):
     """

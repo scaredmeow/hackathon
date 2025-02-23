@@ -43,20 +43,32 @@
 
   "weather": [
     {
-      "city": "Metro Manila",
-      "current_weather": {
-        "date": "2025-02-22",
-        "condition": "Rainy",
-        "temperature": 27,
-        "wind_speed": 10,
-        "humidity": 80,
-        "background": "rainy_bg.png"
-      },
-      "forecast": {
-        "typhoon_in": 3,
-        "expected_severity": "high",
-        "storm_warning_level": 3
-      }
+      "city": "antique",
+      "timezone": "Asia/Singapore",
+      "is_day": 1,
+      "current_weather": "Rain: Slight",
+      "weather_code": "61"
+    },
+    {
+      "city": "masagana",
+      "timezone": "Asia/Singapore",
+      "is_day": 1,
+      "current_weather": "Overcast",
+      "weather_code": "3"
+    },
+    {
+      "city": "manila",
+      "timezone": "Asia/Singapore",
+      "is_day": 1,
+      "current_weather": "Clear sky",
+      "weather_code": "0"
+    },
+    {
+      "city": "katipunan",
+      "timezone": "Asia/Singapore",
+      "is_day": 1,
+      "current_weather": "Partly cloudy",
+      "weather_code": "2"
     }
   ],
 
