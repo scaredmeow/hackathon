@@ -58,7 +58,7 @@
 
   "pets": [
   {
-    "pet_name": "Pou",
+    "pet_name": "gippy",
     "health": 85,
     "tasks_completed": ["task_001", "task_003", "task_005"],
     "disasters_survived": ["Typhoon Odette"]
