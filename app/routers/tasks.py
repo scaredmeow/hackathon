@@ -15,7 +15,7 @@ def get_tasks():
     return db["tasks"]
 
 @router.get("/tasks/{weather_code}")
-def get_tasks_with_weather_code(weather_code: int):
+def get_tasks_with_weather_code(weather_code: str):
     tasks = []
     for task in db["tasks"]:
         # Check if the weather_code is in the weather_code list
@@ -34,8 +34,6 @@ def get_task(task_id: str):
             return task
     raise HTTPException(status_code=404, detail="Task not found")
 
-
-    
 @router.put("/task/{task_id}", response_model=Task)
 def update_task(task_id: str, task: Task, source: str = "json"):
     if source == "json":

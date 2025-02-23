@@ -20,14 +20,14 @@ class UserResponse(User):
     id: str
 
 class Task(BaseModel):
-    task_id:str
+    task_id: str
     name: str
     points_gained: int
     points_lost: int
     item_required: Optional[str] = None
     type: str
     status: str
-    weather_code: List[int]
+    weather_code: List[str]
 
 class Disaster(BaseModel):
     type: str
