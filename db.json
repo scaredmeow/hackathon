@@ -117,7 +117,7 @@
       "item_required": "Flashlight",
       "type": "daily",
       "status": "pending",
-      "weather_code": [95, 99]
+      "weather_code": ["95", "99"]
     },
     {
       "task_id": "task_002",
@@ -127,7 +127,7 @@
       "item_required": "Power Bank",
       "type": "daily",
       "status": "pending",
-      "weather_code": [95, 99]
+      "weather_code": ["95", "99"]
     },
     {
       "task_id": "task_003",
@@ -137,7 +137,7 @@
       "item_required": null,
       "type": "disaster-prep",
       "status": "pending",
-      "weather_code": [95, 99]
+      "weather_code": ["95", "99"]
     },
     {
       "task_id": "task_004",
@@ -147,7 +147,7 @@
       "item_required": "Water Container",
       "type": "disaster-prep",
       "status": "pending",
-      "weather_code": [61, 63, 95, 99]
+      "weather_code": ["61", "63", "95", "99"]
     },
     {
       "task_id": "task_005",
@@ -157,7 +157,7 @@
       "item_required": "Food Supplies",
       "type": "disaster-prep",
       "status": "pending",
-      "weather_code": [95, 99]
+      "weather_code": ["95", "99"]
     },
     {
       "task_id": "task_006",
@@ -167,7 +167,7 @@
       "item_required": null,
       "type": "disaster-prep",
       "status": "pending",
-      "weather_code": [95, 99]
+      "weather_code": ["95", "99"]
     },
     {
       "task_id": "task_007",
@@ -177,7 +177,7 @@
       "item_required": "Bag",
       "type": "disaster-prep",
       "status": "pending",
-      "weather_code": [95, 99]
+      "weather_code": ["95", "99"]
     },
     {
       "task_id": "task_008",
@@ -187,7 +187,7 @@
       "item_required": null,
       "type": "disaster-prep",
       "status": "pending",
-      "weather_code": [1, 2, 3, 45, 48, 61, 63, 95, 99]
+      "weather_code": ["1", "2", "3", "45", "48", "61", "63", "95", "99"]
     },
     {
       "task_id": "task_009",
@@ -197,7 +197,7 @@
       "item_required": null,
       "type": "disaster-prep",
       "status": "pending",
-      "weather_code": [61, 63, 95, 99]
+      "weather_code": ["61", "63", "95", "99"]
     },
     {
       "task_id": "task_010",
@@ -207,7 +207,7 @@
       "item_required": null,
       "type": "disaster-prep",
       "status": "pending",
-      "weather_code": [95, 99]
+      "weather_code": ["95", "99"]
     },
     {
       "task_id": "task_011",
@@ -217,7 +217,7 @@
       "item_required": null,
       "type": "disaster-prep",
       "status": "pending",
-      "weather_code": [95, 99, 61, 63, 65]
+      "weather_code": ["95", "99", "61", "63", "65"]
     },
     {
       "task_id": "task_012",
@@ -227,7 +227,7 @@
       "item_required": null,
       "type": "fun",
       "status": "pending",
-      "weather_code": [0]
+      "weather_code": ["0"]
     },
     {
       "task_id": "task_013",
@@ -237,7 +237,7 @@
       "item_required": null,
       "type": "fun",
       "status": "pending",
-      "weather_code": [0]
+      "weather_code": ["0"]
     },
     {
       "task_id": "task_014",
@@ -247,7 +247,7 @@
       "item_required": null,
       "type": "fun",
       "status": "pending",
-      "weather_code": [0]
+      "weather_code": ["0"]
     },
     {
       "task_id": "task_015",
@@ -257,7 +257,7 @@
       "item_required": null,
       "type": "fun",
       "status": "pending",
-      "weather_code": [0]
+      "weather_code": ["0"]
     }
   ],
   "items": [
